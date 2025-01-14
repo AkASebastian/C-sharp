@@ -3,11 +3,112 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: #333; /* Dark gray for body text */
+            background-color: #f4f4f4; /* Light gray background */
+        }
 
-Welcome to your new app.
+        .header, .widget {
+            font-family: 'Poppins', sans-serif; /* Apply Poppins font only here */
+        }
 
-<h3>User Count: @userCount</h3>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 30px;
+            justify-content: center;
+        }
+
+        .widget {
+            background-color: #fff; /* White background for widgets */
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .widget:hover {
+                transform: translateY(-5px); /* Hover effect for widget */
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+            }
+
+            .widget h3 {
+                margin: 0;
+                font-size: 1.5em;
+                color: #333;
+            }
+
+        .count-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #4caf50; /* Blue color for the text */
+        }
+
+        .widget .details {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #666; /* Light gray text */
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #fff; /* White background for header */
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+            .header h1 {
+                font-size: 3em;
+                margin: 0;
+                color: #333; /* Dark text color for header */
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <div class="widget">
+            <h3>Users</h3>
+            <div class="count-value">@userCount</div>
+            <div class="details">Total active users</div>
+        </div>
+
+        <div class="widget">
+            <h3>Revenue</h3>
+            <div class="count-value">$5,432</div>
+            <div class="details">Total revenue this month</div>
+        </div>
+
+        <div class="widget">
+            <h3>Orders</h3>
+            <div class="count-value">1,250</div>
+            <div class="details">Total orders processed</div>
+        </div>
+
+        <div class="widget">
+            <h3>Support Tickets</h3>
+            <div class="count-value">120</div>
+            <div class="details">Pending support tickets</div>
+        </div>
+    </div>
+</body>
+</html>
 
 @code {
     private int userCount;

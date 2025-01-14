@@ -49,3 +49,74 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+/* General container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Intro section */
+.intro-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.welcome-title {
+    font-size: 3rem;
+    color: #4A90E2;
+    font-weight: bold;
+    margin: 0;
+}
+
+.intro-text {
+    font-size: 1.25rem;
+    color: #555;
+}
+
+/* User count widget */
+.widget {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 400px;
+    border: 1px solid #ddd;
+}
+
+.widget-header {
+    background-color: #4A90E2;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+
+.widget-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.widget-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.user-count {
+    margin-top: 20px;
+}
+
+.count-label {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.count-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4A90E2;
+    margin-top: 10px;
+}
+
