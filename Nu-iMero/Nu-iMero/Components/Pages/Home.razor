@@ -1,7 +1,20 @@
 ﻿@page "/"
+@inject Nu_iMero.Services.UserService UserService
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<h3>User Count: @userCount</h3>
+
+@code {
+    private int userCount;
+
+    // This will run when the component is initialized
+    protected override async Task OnInitializedAsync()
+    {
+        userCount = await UserService.GetUserCountAsync();
+    }
+}

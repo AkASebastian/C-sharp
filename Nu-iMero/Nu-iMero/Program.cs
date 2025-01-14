@@ -5,8 +5,16 @@ using Nu_iMero.Client.Pages;
 using Nu_iMero.Components;
 using Nu_iMero.Components.Account;
 using Nu_iMero.Data;
+using Nu_iMero.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Register services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
+
+// Register UserService for DI
+builder.Services.AddScoped<UserService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
