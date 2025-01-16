@@ -1,8 +1,8 @@
 ﻿@page "/Account/Manage"
-
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Identity
 @using Nu_iMero.Data
+@using Nu_iMero.Components
 
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
@@ -31,12 +31,27 @@
             <button type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </EditForm>
     </div>
+
+    <!-- Chart Component -->
+    <div class="col-md-6">
+        <h4>Chart Example</h4>
+        <ChartComponent CanvasId="exampleChart"
+                        ChartType="bar"
+                        Labels="@Labels"
+                        Data="@Data"
+                        BackgroundColors="@BackgroundColors" />
+    </div>
 </div>
 
 @code {
     private ApplicationUser user = default!;
     private string? username;
     private string? phoneNumber;
+
+    // Data for the chart
+    private string[] Labels = new[] { "January", "February", "March" };
+    private object[] Data = new object[] { 10, 20, 30 };
+    private string[] BackgroundColors = new[] { "red", "blue", "green" };
 
     [CascadingParameter]
     private HttpContext HttpContext { get; set; } = default!;
