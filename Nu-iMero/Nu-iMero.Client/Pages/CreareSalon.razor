@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Authorization
+
+
+@page "/creare-salon"
+@attribute [Authorize(Roles = "BusinessOwner")]
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+
+<h3>CreareSalon</h3>
+
+@code {
+
+}

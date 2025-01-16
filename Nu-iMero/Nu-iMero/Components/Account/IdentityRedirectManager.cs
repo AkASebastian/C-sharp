@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Components;
 
 namespace Nu_iMero.Components.Account
 {
-    internal sealed class IdentityRedirectManager(NavigationManager navigationManager)
+    public sealed class IdentityRedirectManager
     {
+        private readonly NavigationManager navigationManager;
+
         public const string StatusCookieName = "Identity.StatusMessage";
 
         private static readonly CookieBuilder StatusCookieBuilder = new()
@@ -14,6 +16,11 @@ namespace Nu_iMero.Components.Account
             IsEssential = true,
             MaxAge = TimeSpan.FromSeconds(5),
         };
+
+        public IdentityRedirectManager(NavigationManager navigationManager)
+        {
+            this.navigationManager = navigationManager ?? throw new ArgumentNullException(nameof(navigationManager));
+        }
 
         [DoesNotReturn]
         public void RedirectTo(string? uri)
