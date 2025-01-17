@@ -1,0 +1,82 @@
+﻿@page "/Account/Manage/Settings"
+@using Nu_iMero.Client.Services
+@inject SerializationService SerializationService
+
+
+<PageTitle>Profile Management</PageTitle>
+
+<h3>Manage Your Account</h3>
+
+<div>
+    <h4>Serialization Example</h4>
+    <button @onclick="SerializeToJson">Serialize to JSON</button>
+    <button @onclick="DeserializeFromJson">Deserialize from JSON</button>
+    <button @onclick="SerializeToXml">Serialize to XML</button>
+    <button @onclick="DeserializeFromXml">Deserialize from XML</button>
+</div>
+
+<p>@resultMessage</p>
+
+@code {
+    private string resultMessage = string.Empty;
+
+    private async Task SerializeToJson()
+    {
+        try
+        {
+            var user = new { Name = "John", Age = 30 }; // Example object
+            var filePath = Path.Combine(Environment.CurrentDirectory, "user.json");
+
+            SerializationService.SerializeToJson(user, filePath);
+            resultMessage = $"Serialized to JSON: {filePath}";
+        }
+        catch (Exception ex)
+        {
+            resultMessage = $"Error: {ex.Message}";
+        }
+    }
+
+    private async Task DeserializeFromJson()
+    {
+        try
+        {
+            var filePath = Path.Combine(Environment.CurrentDirectory, "user.json");
+            var user = SerializationService.DeserializeFromJson<dynamic>(filePath);
+            resultMessage = $"Deserialized from JSON: {user.Name}, Age: {user.Age}";
+        }
+        catch (Exception ex)
+        {
+            resultMessage = $"Error: {ex.Message}";
+        }
+    }
+
+    private async Task SerializeToXml()
+    {
+        try
+        {
+            var user = new { Name = "John", Age = 30 }; // Example object
+            var filePath = Path.Combine(Environment.CurrentDirectory, "user.xml");
+
+            SerializationService.SerializeToXml(user, filePath);
+            resultMessage = $"Serialized to XML: {filePath}";
+        }
+        catch (Exception ex)
+        {
+            resultMessage = $"Error: {ex.Message}";
+        }
+    }
+
+    private async Task DeserializeFromXml()
+    {
+        try
+        {
+            var filePath = Path.Combine(Environment.CurrentDirectory, "user.xml");
+            var user = SerializationService.DeserializeFromXml<dynamic>(filePath);
+            resultMessage = $"Deserialized from XML: {user.Name}, Age: {user.Age}";
+        }
+        catch (Exception ex)
+        {
+            resultMessage = $"Error: {ex.Message}";
+        }
+    }
+}
