@@ -6,7 +6,6 @@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
 @using Nu_iMero.Data
-
 @inject UserManager<ApplicationUser> UserManager
 @inject IUserStore<ApplicationUser> UserStore
 @inject SignInManager<ApplicationUser> SignInManager
@@ -124,10 +123,32 @@
         return (IUserEmailStore<ApplicationUser>)UserStore;
     }
 
+    // Custom validation for email to ensure it starts with a letter
+    public class StartsWithLetterAttribute : ValidationAttribute
+    {
+        public StartsWithLetterAttribute() : base("The email should start with a letter.")
+        {
+        }
+
+        public override bool IsValid(object value)
+        {
+            if (value == null)
+                return false;
+
+            string email = value as string;
+            if (string.IsNullOrEmpty(email))
+                return false;
+
+            // Check if the first character is a letter (A-Z or a-z)
+            return System.Text.RegularExpressions.Regex.IsMatch(email[0].ToString(), @"^[A-Za-z]$");
+        }
+    }
+
     private sealed class InputModel
     {
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
+        [StartsWithLetter(ErrorMessage = "The email should start with a letter.")]
         [Display(Name = "Email")]
         public string Email { get; set; } = "";
 
