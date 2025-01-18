@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@inject IJSRuntime JS
 @rendermode InteractiveAuto
 
 <PageTitle>Counter</PageTitle>
@@ -9,13 +10,46 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<!-- Add the button to generate PDF -->
+<button class="btn btn-success" @onclick="DownloadPdf">Download PDF</button>
+
 @code {
     private int currentCount = 0;
 
+    // Method to increment the count
     private void IncrementCount()
     {
         currentCount++;
         Console.WriteLine("Test:" + currentCount);
         Console.WriteLine("Test:1." + currentCount);
+    }
+
+    // Method to generate and download the PDF
+    private async Task DownloadPdf()
+    {
+        try
+        {
+            // Initialize the PDF document
+            using var memoryStream = new MemoryStream();
+            var document = new iText.Kernel.Pdf.PdfDocument(new iText.Kernel.Pdf.PdfWriter(memoryStream));
+            var documentContent = new iText.Layout.Document(document);
+
+            // Add some content to the PDF
+            documentContent.Add(new iText.Layout.Element.Paragraph("Hello, this is a PDF generated from your Blazor app!"));
+            documentContent.Add(new iText.Layout.Element.Paragraph($"Current count: {currentCount}"));
+
+            // Close the document
+            document.Close();
+
+            // Get the bytes of the generated PDF
+            var pdfBytes = memoryStream.ToArray();
+
+            // Trigger download (in Blazor WebAssembly, use JS interop to trigger download)
+            await JS.InvokeVoidAsync("downloadFile", "counter.pdf", Convert.ToBase64String(pdfBytes));
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating PDF: {ex.Message}");
+        }
     }
 }
