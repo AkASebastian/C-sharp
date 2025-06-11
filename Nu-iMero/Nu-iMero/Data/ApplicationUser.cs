@@ -1,10 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-
-namespace Nu_iMero.Data
-{
-    // Add profile data for application users by adding properties to the ApplicationUser class
-    public class ApplicationUser : IdentityUser
-    {
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:aacc7da53377dcf69ead4f1a1e524f9dfe50389d16496b353274cbd760bd5e44
+size 233

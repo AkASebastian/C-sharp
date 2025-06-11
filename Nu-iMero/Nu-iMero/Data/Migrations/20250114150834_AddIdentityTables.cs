@@ -1,29 +1,3 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-#nullable disable
-
-namespace Nu_iMero.Migrations
-{
-    /// <inheritdoc />
-    public partial class AddIdentityTables : Migration
-    {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<string>(
-                name: "FullName",
-                table: "AspNetUsers",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: "");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "FullName",
-                table: "AspNetUsers");
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:adc3a6a0df51450f8a70c73170ceea764368398a07483b72523c0e9a7e4887c3
+size 793

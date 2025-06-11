@@ -1,17 +1,3 @@
-﻿@page "/map"
-@inject IJSRuntime JS
-
-<h3>Google Map with Marker</h3>
-<div id="map" style="height: 500px; width: 100%;"></div>
-
-@code {
-    private string ApiKey = "AIzaSyBa5at27T94r-T61umJRsYesTJNm2cSojY";
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("initializeGoogleMap", ApiKey);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ea1bc6e52f33afa168fcd530626b6a5a879d086c45c959f84c86253abd7b275e
+size 423

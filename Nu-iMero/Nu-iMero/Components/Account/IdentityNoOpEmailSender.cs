@@ -1,21 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Nu_iMero.Data;
-
-namespace Nu_iMero.Components.Account
-{
-    // Remove the "else if (EmailSender is IdentityNoOpEmailSender)" block from RegisterConfirmation.razor after updating with a real implementation.
-    internal sealed class IdentityNoOpEmailSender : IEmailSender<ApplicationUser>
-    {
-        private readonly IEmailSender emailSender = new NoOpEmailSender();
-
-        public Task SendConfirmationLinkAsync(ApplicationUser user, string email, string confirmationLink) =>
-            emailSender.SendEmailAsync(email, "Confirm your email", $"Please confirm your account by <a href='{confirmationLink}'>clicking here</a>.");
-
-        public Task SendPasswordResetLinkAsync(ApplicationUser user, string email, string resetLink) =>
-            emailSender.SendEmailAsync(email, "Reset your password", $"Please reset your password by <a href='{resetLink}'>clicking here</a>.");
-
-        public Task SendPasswordResetCodeAsync(ApplicationUser user, string email, string resetCode) =>
-            emailSender.SendEmailAsync(email, "Reset your password", $"Please reset your password using the following code: {resetCode}");
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:cf906298ac44705f45f24e5cef24b628d9b92cfa8fd81e3c0397d118b7db9869
+size 1247

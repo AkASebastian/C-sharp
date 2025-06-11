@@ -1,16 +1,3 @@
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Nu_iMero.Client;
-using Nu_iMero.Client.Services;
-
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
-
-builder.Services.AddAuthorizationCore();
-builder.Services.AddCascadingAuthenticationState();
-builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
-builder.Services.AddSingleton<SerializationService>();
-Console.WriteLine("SerializationService registered.");
-
-
-
-await builder.Build().RunAsync();
+version https://git-lfs.github.com/spec/v1
+oid sha256:ab2111dfcd19de71d25e95d995e40387ad00c1f458ae69ba31480694b9cd4a7e
+size 584
